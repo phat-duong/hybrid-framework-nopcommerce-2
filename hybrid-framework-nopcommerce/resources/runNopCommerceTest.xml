@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="NopCommerce">
+    <!--    <groups>-->
+    <!--        <run>-->
+    <!--            <include name = "admin"/>-->
+    <!--        </run>-->
+    <!--    </groups>-->
+
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+<!--        <listener class-name="reportConfig.ReportNGListener"></listener> -->
+<!--        <listener class-name="reportConfig.ExtentReportListenerV3"></listener>-->
+<!--        <listener class-name="org.uncommons.reportng.HTMLReporter"/>-->
+<!--        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
+    </listeners>
+
+    <!--    Muốn chạy trên nhiều môi trường server dev, stg, prod thì dùng parameter-->
+<!--    <parameter name="server" value="DEV"/>-->
+
+    <test name="Run on CHROME">
+        <!--        Muốn cho chạy trên nhiều browser thì dùng parameter-->
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="com.nopcommerce.user.Level_14_Log_ReportNG"/>
+        </classes>
+    </test> <!-- Test -->
+
+<!--    <test name="Run on FIREFOX">-->
+<!--        <parameter name="browser" value="firefox"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+
+</suite> <!-- Suite -->

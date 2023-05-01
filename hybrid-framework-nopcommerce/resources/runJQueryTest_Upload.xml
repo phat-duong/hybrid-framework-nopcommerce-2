@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="JQuery Upload">
+    <parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/"></parameter>
+
+    <test name="Run on CHROME">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="jquery.Level_11_Upload_Files"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->

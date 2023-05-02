@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Facebook" parallel="tests" thread-count="3">
+<!--    Nếu chạy parallel bằng class: chạy độc lập từng class-->
+<!--    Nếu chạy parallel bằng method (beforeMethod): chạy độc lập từng testcase (test method)-->
+
+<!--    Riêng 1 Thread-->
+    <test name="First Test">
+        <classes>
+            <class name="testng.Level_20_Depend_Test"/>
+            <class name="testng.Topic_07_First_Class"/>
+            <class name="testng.Topic_07_Second_Class"/>
+
+        </classes>
+    </test> <!-- Test -->
+
+    <!--    Riêng 1 Thread-->
+<!--    <test name="Second Test">-->
+<!--        <classes>-->
+<!--            <class name="testng.Level_20_Depend_Test"/>-->
+<!--            <class name="testng.Level_20_Depend_Test_02"/>-->
+<!--            <class name="testng.Level_20_Depend_Test_03"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+</suite> <!-- Suite -->

@@ -1,5 +1,6 @@
 package pageObjects.nopCommerce.user;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
@@ -13,31 +14,36 @@ public class UserRegisterPageObject extends BasePage{
         this.driver = driver;
     }
 
+    @Step("Enter to Firstname textbox with value is {0}")
     public void inputToFirstnameTextbox(String firstname) {
         waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
         sendkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstname);
     }
-
+    @Step("Enter to Lastname textbox with value is {0}")
     public void inputToLastnameTextbox(String lastname) {
         waitForElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
         sendkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastname);
     }
 
+    @Step("Enter to Email textbox with value is {0}")
     public void inputToEmailTextbox(String emailAddress) {
         waitForElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
         sendkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, emailAddress);
     }
 
+    @Step("Enter to Password textbox with value is {0}")
     public void inputToPasswordTextbox(String password) {
         waitForElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
         sendkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
     }
 
+    @Step("Enter to Confirm password textbox with value is {0}")
     public void inputToConfirmPasswordTextbox(String confirmPassword) {
         waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
         sendkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
     }
 
+    @Step("Click on Register button")
     public void clickOnRegisterButton() {
         waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
         clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
@@ -58,12 +64,14 @@ public class UserRegisterPageObject extends BasePage{
         return getElementText(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
     }
 
+    @Step("Click on Logout button")
     public UserHomePageObject clickOnLogoutLink() {
         waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
         clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
         return PageGeneratorManager.getUserHomePage(driver);
     }
 
+    @Step("Verify register success message is displayed")
     public String getRegisterSuccessMessage() {
         waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
         return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);

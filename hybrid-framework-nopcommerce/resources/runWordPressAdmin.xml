@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="WordPress - Admin">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+
+    <parameter name="urlAdmin" value="https://automationfc.net/wp-admin"></parameter>
+    <parameter name="urlUser" value="https://automationfc.net"></parameter>
+
+    <test name="Run on CHROME">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="jquery.Level_10_DataTable_DataGrid"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->

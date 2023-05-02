@@ -5,6 +5,7 @@ import java.io.File;
 public class GlobalConstants {
     public static final String PROJECT_PATH = System.getProperty("user.dir");
     public static final String OS_NAME = System.getProperty("os.name");
+    public static final String JAVA_VERSION = System.getProperty("java.version");
 
     //trỏ vào 1 thư mục mặc định của User
     //Window: Downloads
@@ -16,6 +17,7 @@ public class GlobalConstants {
     public static final String REPORTNG_SCREENSHOT = PROJECT_PATH + File.separator +"ReportNGImages" + File.separator;
     public static final String EXTENT_PATH = PROJECT_PATH + "/htmlExtent/";
     public static final String ALLURE_PATH = PROJECT_PATH + "/htmlAllure/";
+
 
     //Xử lý Authentication alert
     //Upload = autoIT

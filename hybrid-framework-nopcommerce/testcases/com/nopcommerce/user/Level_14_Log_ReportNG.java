@@ -78,6 +78,28 @@ public class Level_14_Log_ReportNG extends BaseTest{
 //        homePage = registerPage.clickOnLogoutLink();
     }
 
+    @Test
+    public void User_02_Login() {
+        System.out.println("Login_06 - Step 01: Click on login link");
+        loginPage = homePage.clickOnLoginLink();
+
+        System.out.println("Login_06 - Step 02: Input email and password");
+        loginPage.inputIntoEmailTextbox(existingEmail);
+        loginPage.inputIntoPasswordTextbox(password);
+
+        System.out.println("Login_06 - Step 03: Click on login button");
+        homePage = loginPage.clickOnLoginButton();
+
+        System.out.println("Login_06 - Step 04: Verify 'My Account' link at homepage is displayed");
+        verifyTrue(homePage.isMyAccountLinkDisplayed());
+
+        System.out.println("Login_06 - Step 05: Navigate to 'My Account' page");
+        customerInfoPage = homePage.clickOnMyAccountLink();
+
+        System.out.println("Login_06 - Step 06: Verify 'Custom Infor' page is displayed");
+        verifyTrue(customerInfoPage.isCustomerInfoPageDisplayed());
+    }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         driver.quit();

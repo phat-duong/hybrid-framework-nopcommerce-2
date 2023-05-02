@@ -15,5 +15,9 @@
     <orderEntry type="library" name="commons-io-2.7" level="project" />
     <orderEntry type="library" name="docker-java-api-3.2.13" level="project" />
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
+    <orderEntry type="library" name="commons-collections-3.2.1" level="project" />
+    <orderEntry type="library" name="extentreports-5.0.8" level="project" />
+    <orderEntry type="library" name="allure-testng-2.13.5" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.9.0" level="project" />
   </component>
 </module>

@@ -7,13 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.management.RuntimeErrorException;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -298,6 +292,10 @@ public class BasePage {
         return getWebElementXpath(driver, xpathLocator).getAttribute(attributeName);
     }
 
+    public String getElementAttribute(WebDriver driver, String locatorType, String attributeName, String... dynamicValues) {
+        return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
+    }
+
     public String getElementCssValue(WebDriver driver, String locatorType, String propertyName) {
         return getWebElement(driver, locatorType).getCssValue(propertyName);
     }
@@ -466,6 +464,12 @@ public class BasePage {
     public void scrollToElement(WebDriver driver, String locatorType) {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", getWebElement(driver, locatorType));
+    }
+
+    public String getElementValueByJsXpath(WebDriver driver, String xpathLocator) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        xpathLocator = xpathLocator.replace("xpath=", "");
+        return (String) jsExecutor.executeScript("return $document.evaluate(\"" + xpathLocator + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue).val()");
     }
 
     public void removeAttributeInDOM(WebDriver driver, String locatorType, String attributeRemove) {
@@ -683,9 +687,69 @@ public class BasePage {
         }
     }
 
+    // Level 18: Pattern Object
     public void openPagesAtMyAccountByPageName(WebDriver driver, String pageName) {
         waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
         clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+    }
+
+    /** Enter to dynamic textbox by ID
+     * @author PhatDT
+     * @param driver
+     * @param textboxID
+     * @param value
+     */
+    public void inputToTextboxByID(WebDriver driver, String textboxID, String value) {
+        waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+        sendkeyToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxID);
+    }
+
+    /** Click on dynamic button by text
+     * @author PhatDT
+     * @param driver
+     * @param buttonText
+     */
+    public void clickOnButtonByText(WebDriver driver, String buttonText) {
+        waitForElementClickable(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+        clickToElement(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+    }
+
+    /** Select item in dropdown by name attribute
+     * @param driver
+     * @param dropdownAttributeName
+     * @param itemValue
+     */
+    public void selectToDropdownByName(WebDriver driver, String dropdownAttributeName, String itemValue) {
+        waitForElementClickable(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
+        selectItemInDefaultDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, itemValue, dropdownAttributeName);
+    }
+
+    /** Click on dynamic radio button by label name
+     * @param driver
+     * @param radioButtonLabelName
+     */
+    public void clickOnRadioButtonByLabel(WebDriver driver, String radioButtonLabelName) {
+        waitForElementClickable(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabelName);
+        checkToCheckboxOrRadio(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabelName);
+    }
+
+    /** Click on dynamic checkbox by label name
+     * @param driver
+     * @param checkboxLabelName
+     */
+    public void clickOnCheckboxByLabel(WebDriver driver, String checkboxLabelName) {
+        waitForElementClickable(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabelName);
+        checkToCheckboxOrRadio(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabelName);
+    }
+
+    /** Get value in textbox by ID
+     * @param driver
+     * @param textboxID
+     * @return
+     */
+    public String getTextboxValueByID(WebDriver driver, String textboxID) {
+        waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+        return getElementAttribute(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, "value",textboxID);
     }
 
     // Level 8: Switch Role
@@ -701,6 +765,17 @@ public class BasePage {
         return PageGeneratorManager.getAdminLoginPage(driver);
     }
 
+    public Set<Cookie> getAllCookies(WebDriver driver){
+        return driver.manage().getCookies();
+    }
+    public void setCookies(WebDriver driver, Set<Cookie> cookies){
+        for (Cookie cookie : cookies){
+            driver.manage().addCookie(cookie);
+        }
+        sleepInSecond(3);
+    }
+
     private long longTimeout = GlobalConstants.LONG_TIMEOUT;
     private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
+
 }

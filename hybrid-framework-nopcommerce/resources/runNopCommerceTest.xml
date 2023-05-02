@@ -8,10 +8,14 @@
 
     <listeners>
         <listener class-name="commons.MethodListener"></listener>
-<!--        <listener class-name="reportConfig.ReportNGListener"></listener> -->
-<!--        <listener class-name="reportConfig.ExtentReportListenerV3"></listener>-->
 <!--        <listener class-name="org.uncommons.reportng.HTMLReporter"/>-->
 <!--        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
+<!--        C1: dùng để khi testcase fail thì capture lại, dùng report testNG -->
+<!--        <listener class-name="reportConfig.ReportNGListener"></listener>-->
+<!--        C2: dùng để khi testcase fail thì capture lại, dùng Extent Report Listener -->
+<!--        <listener class-name="reportConfig.ExtentTestListenerV5"></listener>-->
+<!--        C3: dùng Allure report-->
+<!--        <listener class-name="reportConfig.AllureTestListener"></listener>-->
     </listeners>
 
     <!--    Muốn chạy trên nhiều môi trường server dev, stg, prod thì dùng parameter-->
@@ -21,7 +25,9 @@
         <!--        Muốn cho chạy trên nhiều browser thì dùng parameter-->
         <parameter name="browser" value="chrome"></parameter>
         <classes>
-            <class name="com.nopcommerce.user.Level_14_Log_ReportNG"/>
+<!--            Level 16: Trigger Common Register run first: cho class common_01 chạy trước để register account-->
+<!--            <class name="com.nopcommerce.common.Common_01_Register_Cookie"/>-->
+            <class name="com.nopcommerce.user.Level_19_Browser_Capabilities"/>
         </classes>
     </test> <!-- Test -->
 

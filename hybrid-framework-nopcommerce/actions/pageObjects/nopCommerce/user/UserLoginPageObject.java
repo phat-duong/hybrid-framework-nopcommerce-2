@@ -46,4 +46,5 @@ public class UserLoginPageObject extends BasePage{
         inputIntoPasswordTextbox(string);
         return clickOnLoginButton();
     }
+
 }

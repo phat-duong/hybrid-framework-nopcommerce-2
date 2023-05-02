@@ -13,7 +13,6 @@
       <root url="jar://$PROJECT_DIR$/libWebDriverManager/httpcore5-h2-5.1.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/libWebDriverManager/jna-5.8.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/libWebDriverManager/dec-0.1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libWebDriverManager/jcl-over-slf4j-1.7.30.jar!/" />
       <root url="jar://$PROJECT_DIR$/libWebDriverManager/webdrivermanager-5.3.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/libWebDriverManager/httpcore5-5.1.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/libWebDriverManager/gson-2.10.jar!/" />
